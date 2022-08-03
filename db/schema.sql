@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gobbles_db;
+CREATE DATABASE gobbles_db;
