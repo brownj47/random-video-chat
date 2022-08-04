@@ -7,7 +7,7 @@ router.get('/', (req, res)=>{
 
 
 //render main video chat page
-router.get('/', (req, res)=>{
+router.get('/videochat', (req, res)=>{
     res.render('videochat')
 });
 
