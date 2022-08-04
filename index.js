@@ -1,8 +1,11 @@
+//Express packages
 const express = require("express");
+const session = require("express-session");
 const exphbs = require("express-handlebars");
+
+//routes and sequelize
 const allRoutes = require("./controllers");
 const sequelize = require("./config/connection");
-const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // Sets up the Express App
@@ -10,9 +13,29 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+//importing socket io requirements
+const http = require('http')
+const server = http.createServer(app)
+const socketio = require('socket.io')
+//initiliaze new instance of socket by passing in express http server
+const io = socketio(server)
+
+//start listening so that on the front end whenever the connection event is triggered it will console log
+io.on('connection', (socket) => {
+
+  console.log(socket)
+  console.log('a user connected');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 
 const sess = {
   secret: process.env.SESSION_SECRET,
