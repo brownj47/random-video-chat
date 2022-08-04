@@ -26,8 +26,9 @@ const io = socketio(server)
 io.on('connection', (socket) => {
 
   socket.on('join-room', (roomId, userId)=>{
-    console.log(roomId, userId)
+    // user join roomID
     socket.join(roomId)
+    // send an emit to the roomId
     socket.to(roomId).emit('user-connected', userId)
   })
 
