@@ -25,10 +25,10 @@ const io = socketio(server)
 
 io.on('connection', (socket) => {
 
-  socket.on('join-room', (roomId, UserId)=>{
-    console.log(roomId, UserId)
+  socket.on('join-room', (roomId, userId)=>{
+    console.log(roomId, userId)
     socket.join(roomId)
-   
+    socket.to(roomId).emit('user-connected', userId)
   })
 
   socket.on('disconnect', () => {
