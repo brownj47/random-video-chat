@@ -5,6 +5,12 @@ router.get('/', (req, res)=>{
     res.render('landing')
 });
 
+
+//render main video chat page
+router.get('/', (req, res)=>{
+    res.render('videochat')
+});
+
 // create account page
 router.get('/create-account', (req, res)=>{
     res.render('create')
