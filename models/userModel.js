@@ -21,9 +21,6 @@ User.init({
     }
 }, {
     sequelize,
-    hooks: {
-        
-    }
 }
 );
 

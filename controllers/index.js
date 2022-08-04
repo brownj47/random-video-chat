@@ -8,17 +8,15 @@ router.get('/', (req, res)=>{
 
 // create account page
 router.get('/create-account', (req, res)=>{
-    res.render('create')
+    res.render('signup')
 });
 router.post('/create-account', (req, res)=>{
-    console.log(req.body)
-    User.create(req.body)
-    .then(data=>{
+    console.log(req.body);
+    User.create(req.body).then(data=>{
         res.json(data)
     }).catch(err=>{
         res.status(500).json({msg:"ERROR",err})
-    })
-    res.json('post route connected')
+    });
 });
 
 //login routes
