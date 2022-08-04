@@ -1,6 +1,6 @@
 .jumbotron {
   color: white;
-  background-image: url(../../dylan-ferreira-HJmxky8Fvmo-unsplash.jpg);
+  background-image: url(../../jumbotron.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,7 +8,8 @@
 }
 
 .text-white,
-.btn {
+.btn,
+.btn-lg {
   background-color: blueviolet;
 }
 
