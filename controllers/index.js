@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/userModel.js')
 
 router.get('/', (req, res)=>{
     res.render('landing')
@@ -11,6 +12,12 @@ router.get('/create-account', (req, res)=>{
 });
 router.post('/create-account', (req, res)=>{
     console.log(req.body)
+    User.create(req.body)
+    .then(data=>{
+        res.json(data)
+    }).catch(err=>{
+        res.status(500).json({msg:"ERROR",err})
+    })
     res.json('post route connected')
 });
 
@@ -20,6 +27,7 @@ router.get('/login', (req, res)=>{
 });
 router.post('/login', (req, res)=>{
     console.log(req.body)
+
     res.json('post route connected')
 });
 
