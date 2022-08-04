@@ -21,10 +21,15 @@ const socketio = require('socket.io')
 const io = socketio(server)
 
 //start listening so that on the front end whenever the connection event is triggered it will console log
+
+
 io.on('connection', (socket) => {
 
-  console.log(socket)
-  console.log('a user connected');
+  socket.on('join-room', (roomId, userId)=>{
+    console.log(roomId, userId)
+    socket.join(roomId)
+    socket.to(roomId).emit('user-connected', userId)
+  })
 
   socket.on('disconnect', () => {
     console.log('user disconnected');

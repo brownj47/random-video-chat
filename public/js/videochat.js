@@ -1,6 +1,11 @@
+const socket = io('')
 
-const io = require('socket.io')
 
-io.on('connection', socket => {
-    console.log(socket)
+//eventually the id will be passed in from the session object
+const id = 'gabe'
+
+socket.emit('join-room', '/videochat', `${id}`)
+
+socket.on('user-connected', userId => {
+    console.log('User connected' + userId)
 })
