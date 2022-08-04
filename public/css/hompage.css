@@ -1,0 +1,18 @@
+.jumbotron {
+  color: white;
+  background-image: url(../../dylan-ferreira-HJmxky8Fvmo-unsplash.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+.text-white,
+.btn {
+  background-color: blueviolet;
+}
+
+header,
+footer {
+  height: 10vh;
+}
