@@ -1,7 +1,7 @@
 const socket = io('')
 
 
-//getting a users id from the session object to pass in below
+//eventually the id will be passed in from the session object
 const id = 'gabe'
 
 socket.emit('join-room', '/videochat', `${id}`)
