@@ -23,6 +23,14 @@ router.post('/login', (req, res)=>{
     res.json('post route connected')
 });
 
+//chat routes
+router.get('/chat', (req, res)=>{
+    res.render('chat')
+});
+router.post('/chat', (req, res)=>{
+    console.log(req.body)
+    res.json('post route connected')
+});
 
 
 module.exports = router;
