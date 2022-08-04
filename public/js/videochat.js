@@ -1,6 +1,7 @@
+const socket = io('/')
 
-const io = require('socket.io')
+socket.emit('join-room', '/videochat', 10)
 
-io.on('connection', socket => {
-    console.log(socket)
+socket.on('user-connected', userId => {
+    console.log('User connected' + userId)
 })
