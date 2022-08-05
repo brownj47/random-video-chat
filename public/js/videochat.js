@@ -1,87 +1,97 @@
-const videoDisplay = document.getElementById('video-grid')
-const socket = io('')
+const videoDisplay = document.getElementById("video-grid");
+const socket = io("");
+const form = document.getElementById("form");
+const input = document.getElementById("input");
+const messages = document.getElementById("messages");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (input.value) {
+    socket.emit("chat message", input.value);
+    input.value = "";
+  }
+});
+
+socket.on("chat message", function (msg) {
+  const item = document.createElement("li");
+  item.textContent = msg;
+  messages.appendChild(item);
+  window.scrollTo(0, document.body.scrollHeight);
+});
 
 //creates new peer object giving current host and setting id to undefined.
 // const myPeer = new Peer(undefined, {
-//     secure: true, 
+//     secure: true,
 //     host: 'testrandomvideog10.herokuapp.com',
 //     port: '3001'
 // })
 const myPeer = new Peer(undefined, {
-    secure: true,
-    host: '0.peerjs.com',
-    port: '443'
-  })
+  secure: true,
+  host: "0.peerjs.com",
+  port: "443",
+});
 
 //creating video element and muting audio
-const myVideo = document.createElement('video')
-myVideo.muted = true
-const peers = {}
+const myVideo = document.createElement("video");
+myVideo.muted = true;
+const peers = {};
 //collecting the users video and audio and then passing it to the addstream function
-navigator.mediaDevices.getUserMedia({
+navigator.mediaDevices
+  .getUserMedia({
     video: true,
-    audio: true
-}).then(stream=>{
-    addStream(myVideo, stream)
-    myPeer.on('call', call => {
-        call.answer(stream)
-        const video = document.createElement('video')
-        call.on('stream', userVideoStream => {
-            addStream(video, userVideoStream)
-            windows.reload()
-        })
-    })
-    
-    socket.on('user-connected', userId => {
-        setTimeout(() => {
-            connectToNewUser(userId, stream)
-        }, 2000)
-    })
-})
+    audio: true,
+  })
+  .then((stream) => {
+    addStream(myVideo, stream);
+    myPeer.on("call", (call) => {
+      call.answer(stream);
+      const video = document.createElement("video");
+      call.on("stream", (userVideoStream) => {
+        addStream(video, userVideoStream);
+        windows.reload();
+      });
+    });
 
+    socket.on("user-connected", (userId) => {
+      setTimeout(() => {
+        connectToNewUser(userId, stream);
+      }, 2000);
+    });
+  });
 
-socket.on('user-disconnected', userId => {
-    if (peers[userId]) peers[userId].close()
-})
+socket.on("user-disconnected", (userId) => {
+  if (peers[userId]) peers[userId].close();
+});
 
-
+//TODO:
 // As soon as we connect to the server and get back the id, we going to run this code and pass
-
 // '/videochat' set to 'videochat/:${roomID}'
-myPeer.on('open', id => {
-    socket.emit('join-room', '/videochat', `${id}`)
-})
-
-//eventually the id will be passed in from the session object
-
-// // have a console of userconnected
-// socket.on('user-connected', userId => {
-//     console.log('User connected ' + userId)
-// })
+myPeer.on("open", (id) => {
+  socket.emit("join-room", "/videochat", `${id}`);
+});
 
 //takes the video element we created AND the stream object we get from the getUserMediaFunction
 const addStream = (video, stream) => {
-    //setting video element to the stream we created 
-    video.srcObject = stream
-    //event listener to start video when a stream is added to it
-    video.addEventListener('loadedmetadata', () => {
-        video.play()
-    })
-    //appends video to html
-    videoDisplay.append(video)
-}
+  //setting video element to the stream we created
+  video.srcObject = stream;
+  //event listener to start video when a stream is added to it
+  video.addEventListener("loadedmetadata", () => {
+    video.play();
+  });
+  //appends video to html
+  videoDisplay.append(video);
+};
 
 //connects the new user into this call
 const connectToNewUser = (userId, stream) => {
-    const call = myPeer.call(userId, stream)
-    const video = document.createElement('video')
-    call.on('stream', userVideoStream => {
-        addStream(video,userVideoStream)
-    })
-    // close video when user leaves the call
-    call.on('close', () => {
-        video.remove()
-
-    })
-    peers[userId] = call
-}
+  const call = myPeer.call(userId, stream);
+  const video = document.createElement("video");
+  call.on("stream", (userVideoStream) => {
+    addStream(video, userVideoStream);
+  });
+  // close video when user leaves the call
+  call.on("close", () => {
+    video.remove();
+  });
+  peers[userId] = call;
+};
