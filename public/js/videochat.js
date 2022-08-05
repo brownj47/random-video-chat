@@ -1,6 +1,7 @@
 const videoDisplay = document.getElementById("video-grid");
 const socket = io("");
 const form = document.getElementById("form");
+const cardBody = document.getElementById("card-body");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
 
@@ -16,7 +17,7 @@ socket.on("chat message", function (msg) {
   const item = document.createElement("li");
   item.textContent = msg;
   messages.appendChild(item);
-  form.scrollTo(0, document.getElementById('messages').offsetHeight);
+  cardBody.scrollTo(0, cardBody.offsetHeight);
   //window.scrollTo(0, document.getElementById('messages').offsetHeight);
 });
 

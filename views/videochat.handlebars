@@ -38,6 +38,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+  
   }
 
   #messages>li {
@@ -52,6 +53,7 @@
     margin: 0;
     padding-bottom: 3rem;
     position: relative;
+    overflow: scroll;
   }
   #form {
     background: rgba(0, 0, 0, 0.15);
@@ -75,12 +77,12 @@
             <h6 class="card-subtitle mb-2 text-muted" style="height: 1rem">
               Chat Box
             </h6>
-          <div class="card-body">
+          <div class="card-body" id="card-body">
             <ul id="messages"></ul>
+          </div>
             <form id="form" action="">
               <input id="input" autocomplete="off" /><button>Send</button>
             </form>
-          </div>
         </div>
       </div>
     </div>
