@@ -17,12 +17,11 @@ router.get('/', (req, res) => {
     res.render('landing')
 });
 router.post('/test', (req, res) => {
-    res.json(req.session.user)
-    // if (req.session.user){
-    //     return res.json({msg: "logged in"})
-    // } else {
-    //     return res.json({msg: "logged out})
-    // }
+    if (req.session.user){
+        return res.json({msg: "logged in"})
+    } else {
+        return res.json({msg: "logged out"})
+    }
 });
 router.post("/logout", (req, res) => {
     req.session.destroy();
