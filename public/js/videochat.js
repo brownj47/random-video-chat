@@ -2,10 +2,16 @@ const videoDisplay = document.getElementById('video-grid')
 const socket = io('')
 
 //creates new peer object giving current host and setting id to undefined.
+// const myPeer = new Peer(undefined, {
+//     secure: true, 
+//     host: 'testrandomvideog10.herokuapp.com',
+//     port: '3001'
+// })
 const myPeer = new Peer(undefined, {
-    host: '/',
-    port: '3001'
-})
+    secure: true,
+    host: '0.peerjs.com',
+    port: '443'
+  })
 
 //creating video element and muting audio
 const myVideo = document.createElement('video')
