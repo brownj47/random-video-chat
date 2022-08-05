@@ -11,7 +11,7 @@ const myPeer = new Peer(undefined, {
     secure: true,
     host: '0.peerjs.com',
     port: '443'
-  })
+})
 
 //creating video element and muting audio
 const myVideo = document.createElement('video')
@@ -21,7 +21,7 @@ const peers = {}
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
-}).then(stream=>{
+}).then(stream => {
     addStream(myVideo, stream)
     myPeer.on('call', call => {
         call.answer(stream)
@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia({
             windows.reload()
         })
     })
-    
+
     socket.on('user-connected', userId => {
         setTimeout(() => {
             connectToNewUser(userId, stream)
@@ -76,7 +76,7 @@ const connectToNewUser = (userId, stream) => {
     const call = myPeer.call(userId, stream)
     const video = document.createElement('video')
     call.on('stream', userVideoStream => {
-        addStream(video,userVideoStream)
+        addStream(video, userVideoStream)
     })
     // close video when user leaves the call
     call.on('close', () => {
