@@ -13,6 +13,12 @@ router.get('/', (req, res) => {
     res.render('landing')
 });
 
+//Logout route
+router.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.json({msg:"logged out!"})
+});
+
 //use other routes
 router.use("/login",loginRoutes)
 router.use("/create-account",createAccountRoutes)
