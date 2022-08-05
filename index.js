@@ -23,19 +23,31 @@ const io = socketio(server)
 //start listening so that on the front end whenever the connection event is triggered it will console log
 
 
-io.on('connection', (socket) => {
+// io.on('connection', (socket) => {
 
-  socket.on('join-room', (roomId, userId)=>{
-    // user join roomID
+//   socket.on('join-room', (roomId, userId)=>{
+//     // user join roomID
+//     socket.join(roomId)
+//     // send an emit to the roomId
+//     socket.to(roomId).emit('user-connected', userId)
+//   })
+
+//   socket.on('disconnect', () => {
+//     socket.to(roomId).emit('user-disconnected', userId)
+//   });
+
+
+// });
+io.on('connection', socket => {
+  socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
-    // send an emit to the roomId
     socket.to(roomId).emit('user-connected', userId)
-  })
 
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-});
+    socket.on('disconnect', () => {
+      socket.to(roomId).emit('user-disconnected', userId)
+    })
+  })
+})
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
