@@ -48,7 +48,9 @@
   #messages>li:nth-child(odd) {
     background: #efefef;
   }
-
+.card {
+  margin: 2em;
+}
   .card-body {
     margin: 0;
     padding-bottom: 3rem;
@@ -67,6 +69,10 @@
     box-sizing: border-box;
     backdrop-filter: blur(10px);
   }
+  .chat-box-title {
+    padding: 1em;
+    margin: 1em;
+  }
 </style>
 
 <div class="container">
@@ -74,7 +80,7 @@
     <div class="col">
       <div class="chatBox">
         <div class="card" style="width: 22rem; height: 30rem">
-            <h6 class="card-subtitle mb-2 text-muted" style="height: 1rem">
+            <h6 class="card-subtitle mb-2 text-muted chat-box-title" style="height: 1rem">
               Chat Box
             </h6>
           <div class="card-body" id="card-body">
