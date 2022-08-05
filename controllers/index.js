@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 
 //render main video chat page
-router.get('/videochat', (req, res)=>{
+router.get('/videochat', (req, res) => {
     res.render('videochat')
 });
 
@@ -47,25 +47,15 @@ router.post('/login', async (req, res) => {
         if (!bcrypt.compareSync(req.body.password, foundUser.password)) {
             return res.status(401).json('invalid login credentials')
         }
-        req.session.user={
-            id:foundUser.id,
-            username:foundUser.username,
-            email:foundUser.email
+        req.session.user = {
+            id: foundUser.id,
+            username: foundUser.username,
+            email: foundUser.email
         }
         return res.status(200).json(foundUser)
     } catch (err) {
         console.log(err)
     }
 });
-
-//chat routes
-router.get('/chat', (req, res) => {
-    res.render('chat')
-});
-router.post('/chat', (req, res) => {
-    console.log(req.body)
-    res.json('post route connected')
-});
-
 
 module.exports = router;
