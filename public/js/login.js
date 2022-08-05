@@ -18,8 +18,10 @@ const loginFormHandler = async (event) => {
       document.location.replace('/videochat'); 
     } else {
       alert(response.statusText);
-    }
-  }
+    };
+  } else {
+    alert('Please enter a username and password.')
+  };
 };
 
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
