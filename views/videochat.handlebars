@@ -11,14 +11,6 @@
     object-fit: cover;
   }
 
-  #form {
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.25rem;
-    display: flex;
-    height: 3rem;
-    box-sizing: border-box;
-    backdrop-filter: blur(10px);
-  }
 
   #input {
     border: none;
@@ -55,6 +47,24 @@
   #messages>li:nth-child(odd) {
     background: #efefef;
   }
+
+  .card-body {
+    margin: 0;
+    padding-bottom: 3rem;
+    position: relative;
+  }
+  #form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+  }
 </style>
 
 <div class="container">
@@ -62,10 +72,10 @@
     <div class="col">
       <div class="chatBox">
         <div class="card" style="width: 22rem; height: 30rem">
-          <div class="card-body ">
-            <h6 class="card-subtitle mb-2 text-muted" style="height: 25rem">
+            <h6 class="card-subtitle mb-2 text-muted" style="height: 1rem">
               Chat Box
             </h6>
+          <div class="card-body">
             <ul id="messages"></ul>
             <form id="form" action="">
               <input id="input" autocomplete="off" /><button>Send</button>
