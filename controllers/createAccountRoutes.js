@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 // create account page
 router.get('/', (req, res) => {
-    res.render('signup')
+    res.render('signup')  
 });
 
 router.post('/', (req, res) => {
