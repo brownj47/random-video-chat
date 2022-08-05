@@ -1,7 +1,11 @@
+// import sequelize dependencies
 const { Model, DataTypes } = require('sequelize');
+// import sequelize connection
 const sequelize = require('../config/connection.js');
+// import bcrypt
 const bcrypt = require('bcrypt')
 
+// create a user table with id, username, email, password, timestamps
 class User extends Model { };
 
 User.init({
@@ -12,6 +16,7 @@ User.init({
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        isUnique: true,
         vaidate: {
             isEmail: true
         }
@@ -23,6 +28,7 @@ User.init({
 }, {
     sequelize,
     hooks:{
+        // Hash password before upload
         beforeCreate:userObj=>{
             userObj.password = bcrypt.hashSync(userObj.password,4);
             return userObj;
