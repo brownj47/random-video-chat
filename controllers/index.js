@@ -14,7 +14,11 @@ const chatRoutes = require('./videoChatRoute')
 //     res.json({msg:"logged out!"})
 // });
 router.get('/', (req, res) => {
-    res.render('landing')
+    if (!req.session.user){
+        res.render('landing')
+    } else {
+        res.render('videochat')
+    }
 });
 router.post('/test', (req, res) => {
     if (req.session.user){
@@ -23,6 +27,7 @@ router.post('/test', (req, res) => {
         return res.json({msg: "logged out"})
     }
 });
+
 router.post("/logout", (req, res) => {
     req.session.destroy();
     res.json({ msg: "logged out!" })

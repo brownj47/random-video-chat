@@ -5,8 +5,12 @@ const bcrypt = require('bcrypt')
 
 // create account page
 router.get('/', (req, res) => {
-    res.render('signup', req.session.user)  
-    console.log("Session:",req.session.user)
+
+    if (!req.session.user){
+        res.render('signup')  
+    } else {
+        res.render('videochat')
+    }
 });
 
 router.post('/', (req, res) => {
