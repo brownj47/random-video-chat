@@ -3,7 +3,8 @@ const socket = io('')
 
 //creates new peer object giving current host and setting id to undefined.
 const myPeer = new Peer(undefined, {
-    host: '/',
+    secure: true, 
+    host: 'testrandomvideog10.herokuapp.com',
     port: '3001'
 })
 
