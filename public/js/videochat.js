@@ -17,21 +17,22 @@ navigator.mediaDevices.getUserMedia({
     audio: true
 }).then(stream=>{
     addStream(myVideo, stream)
-
     myPeer.on('call', call => {
         call.answer(stream)
         const video = document.createElement('video')
         call.on('stream', userVideoStream => {
             addStream(video, userVideoStream)
+            windows.reload()
         })
     })
     
     socket.on('user-connected', userId => {
         setTimeout(() => {
             connectToNewUser(userId, stream)
-        }, 1000)
+        }, 2000)
     })
 })
+
 
 socket.on('user-disconnected', userId => {
     if (peers[userId]) peers[userId].close()
@@ -62,12 +63,6 @@ const addStream = (video, stream) => {
     })
     //appends video to html
     videoDisplay.append(video)
-    // refresh 
-    const userInCall = 0;
-    while (peers.length != userInCall) {
-        location.reload();
-        userInCall = peers.length
-    }
 }
 
 //connects the new user into this call
@@ -80,9 +75,6 @@ const connectToNewUser = (userId, stream) => {
     // close video when user leaves the call
     call.on('close', () => {
         video.remove()
-        // refresh page 
-        // const refresh = document.createElement('refresh')
-        // location.reload();
 
     })
     peers[userId] = call
