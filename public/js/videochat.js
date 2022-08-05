@@ -25,7 +25,7 @@ navigator.mediaDevices.getUserMedia({
             addStream(video, userVideoStream)
         })
     })
-
+    
     socket.on('user-connected', userId => {
         setTimeout(() => {
             connectToNewUser(userId, stream)
@@ -61,7 +61,7 @@ const addStream = (video, stream) => {
         video.play()
     })
     //appends video to html
-        videoDisplay.append(video)
+    videoDisplay.append(video)
     // refresh 
     const userInCall = 0;
     while (peers.length != userInCall) {
