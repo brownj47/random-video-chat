@@ -30,4 +30,11 @@ video{
   background-color: red;
 }
 
+.form-group{
+  text-align: right;
+}
+.login-button-formEl{
+  text-align: center;
+}
+
 

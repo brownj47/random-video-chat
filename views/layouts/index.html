@@ -41,21 +41,39 @@
 
 
 
-    <div class="jumbotron row justify-content-center m-0">
+    <div class="jumbotron text-center m-0">
+      <div class="row justify-content-center pt-3">
+        <div class="col-md-6 shadow-lg p-3 mb-5 rounded">
 
-      <div class="col-md-6 p-3 mb-5 rounded d-flex flex-column justify-content-center">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h2 class="text-dark">Login</h2>
+              <form class="form login-form">
+                <div class="form-group text-dark">
+                  <label for="email-login">email:</label>
+                  <input class="form-input" type="text" id="email-login" />
+                </div>
+                <div class="form-group text-dark">
+                  <label for="password-login">password:</label>
+                  <input class="form-input" type="password" id="password-login" />
+                </div>
+                <div class="form-group login-button-formEl">
+                  <button class="btn btn-primary" type="submit">login</button>
+                </div>
+              </form>
+  
+            </div>
+            <div class="col-md-4"></div>
 
-        <div class="row justify-content-center">
-          <a class="btn-lg col-3 btn-primary m-1" href="/login">Login</a>
-        </div>
-        <div class="row justify-content-center">
-          <a class="btn-lg col-3 btn-primary" href="/create-account">Create Account</a>
+          </div>
+
+
+
         </div>
       </div>
-
-      </div>
     </div>
-    </div>
+    <script src="js/login.js"></script>
 
 
 
