@@ -5,7 +5,11 @@ const bcrypt = require('bcrypt')
 
 //render main video chat page
 router.get('/', (req, res) => {
-    res.render('videochat')
+    if (req.session.user){ //only allow access if logged in
+        res.render('videochat')
+    } else {
+        res.render('landing')
+    }
 });
 
 

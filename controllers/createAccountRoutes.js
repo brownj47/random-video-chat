@@ -13,13 +13,12 @@ router.post('/', (req, res) => {
     console.log(req.body);
     //add user to database
     User.create(req.body).then(data => {
-        res.json(data)
-
         req.session.user = { // set session details
             id: data.id,
             username: data.username,
             email: data.email
         }
+        res.json(data)
 
     }).catch(err => {
         res.status(500).json({ msg: "ERROR", err })

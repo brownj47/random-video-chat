@@ -16,10 +16,24 @@ const chatRoutes = require('./videoChatRoute')
 router.get('/', (req, res) => {
     res.render('landing')
 });
+router.post('/test', (req, res) => {
+    res.json(req.session.user)
+    // if (req.session.user){
+    //     return res.json({msg: "logged in"})
+    // } else {
+    //     return res.json({msg: "logged out})
+    // }
+});
+router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.json({ msg: "logged out!" })
+})
+
+
 
 //use other routes
-router.use("/login",loginRoutes)
-router.use("/create-account",createAccountRoutes)
-router.use("/videochat",chatRoutes)
+router.use("/login", loginRoutes)
+router.use("/create-account", createAccountRoutes)
+router.use("/videochat", chatRoutes)
 
 module.exports = router;
