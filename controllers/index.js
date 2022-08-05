@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt')
 const loginRoutes = require('./loginRoutes')
 const createAccountRoutes = require('./createAccountRoutes')
 const chatRoutes = require('./videoChatRoute')
-const landingRoutes = require('./landingRoute')
 
 //Logout route
 // router.get('/logout', (req, res) => {
