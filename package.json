@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "devStart": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,15 @@
   "homepage": "https://github.com/Rufasa85/gobbleauth#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bootstrap-icons": "^1.9.1",
     "connect-session-sequelize": "^7.1.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.3"
+    "peer": "^0.6.1",
+    "sequelize": "^6.21.3",
+    "socket.io": "^4.5.1"
   }
 }

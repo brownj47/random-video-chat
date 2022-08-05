@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS gobbles_db;
-CREATE DATABASE gobbles_db;
+DROP DATABASE IF EXISTS users_db;
+CREATE DATABASE users_db;

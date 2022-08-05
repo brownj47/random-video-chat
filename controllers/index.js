@@ -1,40 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const apiRoutes = require("./api")
+const User = require('../models/userModel.js')
+const bcrypt = require('bcrypt')
 
-router.get('/',(req,res)=>{
-    res.render("home")
-})
+//import other routes
+const loginRoutes = require('./loginRoutes')
+const createAccountRoutes = require('./createAccountRoutes')
+const chatRoutes = require('./videoChatRoute')
 
-router.get("/login",(req,res)=>{
-    res.render("login")
-})
+//Home page route
+router.get('/', (req, res) => {
+    res.render('landing')
+});
 
-router.get("/secretclub",(req,res)=>{
-    if(!req.session.user){
-        res.redirect("/login")
-    }
-    res.render("club",req.session.user)
-})
-
-router.get("/readsession",(req,res)=>{
-    res.json(req.session)
-})
-
-router.get("/addcounter",(req,res)=>{
-    if(req.session.counter){
-        req.session.counter++
-    } else {
-        req.session.counter=1
-    }
-    res.send("req.session updated")
-})
-
-router.get("/logout",(req,res)=>{
+//Logout route
+router.get('/logout', (req, res) => {
     req.session.destroy();
     res.json({msg:"logged out!"})
-})
+});
 
-router.use("/api",apiRoutes)
+//use other routes
+router.use("/login",loginRoutes)
+router.use("/create-account",createAccountRoutes)
+router.use("/videochat",chatRoutes)
 
 module.exports = router;
