@@ -14,10 +14,10 @@ router.get('/', (req, res) => {
 });
 
 //Logout route
-router.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.json({msg:"logged out!"})
-});
+// router.get('/logout', (req, res) => {
+//     // req.session.destroy();
+//     res.json({msg:"logged out!"})
+// });
 
 //use other routes
 router.use("/login",loginRoutes)
