@@ -7,17 +7,16 @@ const bcrypt = require('bcrypt')
 const loginRoutes = require('./loginRoutes')
 const createAccountRoutes = require('./createAccountRoutes')
 const chatRoutes = require('./videoChatRoute')
-
-//Home page route
-router.get('/', (req, res) => {
-    res.render('landing')
-});
+const landingRoutes = require('./landingRoute')
 
 //Logout route
 // router.get('/logout', (req, res) => {
 //     // req.session.destroy();
 //     res.json({msg:"logged out!"})
 // });
+router.get('/', (req, res) => {
+    res.render('landing')
+});
 
 //use other routes
 router.use("/login",loginRoutes)

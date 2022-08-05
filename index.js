@@ -34,9 +34,7 @@ const io = socketio(server);
 //   socket.on('disconnect', () => {
 //     socket.to(roomId).emit('user-disconnected', userId)
 //   });
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
+
 
 // });
 io.on("connection", (socket) => {
