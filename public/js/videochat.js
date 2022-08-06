@@ -7,6 +7,7 @@ const messages = document.getElementById("messages");
 //here we are grabbing the users name that was attached to the element via handle bars
 const userName = messages.getAttribute('data-name')
 
+
 //when user clicks send then it grabs the value of input and emits it
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -18,10 +19,17 @@ form.addEventListener("submit", function (e) {
 });
 
 socket.on("chat message", function (msg) {
+//sets new date object
+const date = new Date();
+const pm = date.getHours() >= 12;
+let hour12 = date.getHours() % 12;
+if (!hour12) 
+  hour12 += 12;
+const minute = date.getMinutes();
   //creates document that will hold user message
   const item = document.createElement("li");
   //setting text content to the name and msg using object key pairs
-  item.textContent =(`${msg.name}: ${msg.msg}`);
+  item.textContent =(`${msg.name} ${hour12}:${minute} ${pm ? 'pm' : 'am'}: ${msg.msg}`);
   messages.appendChild(item);
   cardBody.scrollTop = cardBody.scrollHeight
 });
@@ -40,31 +48,33 @@ const myPeer = new Peer(undefined, {
 
 //creating video element and muting audio
 const myVideo = document.createElement("video");
+const videoName = document.createElement('h1')
+videoName.textContent = userName
 myVideo.muted = true;
 const peers = {};
 //collecting the users video and audio and then passing it to the addstream function
 navigator.mediaDevices
-  .getUserMedia({
-    video: true,
-    audio: true,
-  })
-  .then((stream) => {
-    addStream(myVideo, stream);
-    myPeer.on("call", (call) => {
-      call.answer(stream);
-      const video = document.createElement("video");
-      call.on("stream", (userVideoStream) => {
-        addStream(video, userVideoStream);
-        windows.reload();
-      });
-    });
-
-    socket.on("user-connected", (userId) => {
-      setTimeout(() => {
-        connectToNewUser(userId, stream);
-      }, 2000);
+.getUserMedia({
+  video: true,
+  audio: true,
+})
+.then((stream) => {
+  addStream(myVideo, stream);
+  myPeer.on("call", (call) => {
+    call.answer(stream);
+    const video = document.createElement("video");
+    call.on("stream", (userVideoStream) => {
+      addStream(video, userVideoStream);
+      windows.reload();
     });
   });
+  
+  socket.on("user-connected", (userId) => {
+    setTimeout(() => {
+      connectToNewUser(userId, stream);
+    }, 2000);
+  });
+});
 
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
