@@ -97,3 +97,23 @@ const connectToNewUser = (userId, stream) => {
   });
   peers[userId] = call;
 };
+
+
+
+//logout function
+async function logout(){
+  const response = await fetch('/logout', {
+    method: 'POST'
+  });
+
+  if (response.ok) {
+    // If successful, redirect the browser to the profile page
+    document.location.replace('/'); 
+  } else {
+    alert(response.statusText);
+  };
+
+};
+
+//event listener
+document.getElementById('logout-btn').addEventListener("click", logout);
