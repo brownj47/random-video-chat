@@ -25,7 +25,8 @@ const pm = date.getHours() >= 12;
 let hour12 = date.getHours() % 12;
 if (!hour12) 
   hour12 += 12;
-const minute = date.getMinutes();
+//if minute is less than 10 it will add 0 in front, other wise it looks weird ex. 2:1 pm now looks like 2:01pm
+const minute = (date.getMinutes()<10?'0':'') + date.getMinutes()
   //creates document that will hold user message
   const item = document.createElement("li");
   //setting text content to the name and msg using object key pairs
