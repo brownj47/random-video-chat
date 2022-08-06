@@ -11,7 +11,6 @@ const userName = messages.getAttribute('data-name')
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (input.value) {
-    console.log(userName)
     //Sending the message AND the name of the User to the server
     socket.emit("chat message", ({msg:input.value, name:userName}));
     input.value = "";
