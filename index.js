@@ -2,6 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const User = require('./models/userModel')
 
 //routes and sequelize
 const allRoutes = require("./controllers");
@@ -46,9 +47,10 @@ io.on("connection", (socket) => {
       socket.to(roomId).emit("user-disconnected", userId);
     });
   });
-  socket.on("chat message", (msg) => {
+  //when the server receives a chat message event it emits the msg object to everyone
+  socket.on("chat message", async(msg) => {
     console.log("message: " + msg);
-    io.emit("chat message", msg);
+    io.emit("chat message", (msg));
   });
 });
 

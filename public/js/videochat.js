@@ -4,21 +4,27 @@ const form = document.getElementById("form");
 const cardBody = document.getElementById("card-body");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
+//here we are grabbing the users name that was attached to the element via handle bars
+const userName = messages.getAttribute('data-name')
 
+//when user clicks send then it grabs the value of input and emits it
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (input.value) {
-    socket.emit("chat message", input.value);
+    console.log(userName)
+    //Sending the message AND the name of the User to the server
+    socket.emit("chat message", ({msg:input.value, name:userName}));
     input.value = "";
   }
 });
 
 socket.on("chat message", function (msg) {
+  //creates document that will hold user message
   const item = document.createElement("li");
-  item.textContent = msg;
+  //setting text content to the name and msg using object key pairs
+  item.textContent =(`${msg.name}: ${msg.msg}`);
   messages.appendChild(item);
   cardBody.scrollTop = cardBody.scrollHeight
-  //window.scrollTo(0, document.getElementById('messages').offsetHeight);
 });
 
 //creates new peer object giving current host and setting id to undefined.

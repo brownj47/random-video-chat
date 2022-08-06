@@ -33,6 +33,10 @@ router.post("/logout", (req, res) => {
     res.json({ msg: "logged out!" })
 })
 
+router.get("/readsession",(req,res)=>{
+    res.json(req.session)
+})
+
 
 
 //use other routes
