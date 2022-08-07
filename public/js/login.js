@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/videochat'); 
     } else {
-      alert(response.statusText);
+      alert(response);
     };
   } else {
     alert('Please enter a username and password.')

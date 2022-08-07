@@ -3,12 +3,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, 300px);
     grid-auto-rows: 300px;
+    grid-gap: 1.5rem;
   }
 
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    
+    border-radius: 30px;
   }
 
 
@@ -73,18 +76,25 @@
     padding: 1em;
     margin: 1em;
   }
+
+  li {
+    color: #212529;
+    text-align: left;
+  }
 </style>
 
 <div class="jumbotron mb-0">
   <div class="row">
     <div class="col">
       <div class="chatBox">
-        <div class="card" style="width: 22rem; height: 30rem">
+        <p></p>
+        <div class="card" style="width: 22rem; height: 50rem">
             <h6 class="card-subtitle mb-2 text-muted chat-box-title" style="height: 1rem">
               Chat Box
             </h6>
           <div class="card-body" id="card-body">
-            <ul id="messages"></ul>
+            {{!-- setting the data attribute as the username so we can grab this in the DOM --}}
+            <ul data-name="{{username}}" id="messages"></ul>
           </div>
             <form id="form" action="">
               <input id="input" autocomplete="off" /><button>Send</button>
