@@ -5,7 +5,11 @@ const bcrypt = require('bcrypt')
 
 
 router.get('/', (req, res) => {
-    res.render('login');
+    if (!req.session.user){
+        return res.render('login')  
+    } else {
+        return res.render('videochat')
+    }
 
 });
 router.post('/', async (req, res) => {
@@ -18,6 +22,7 @@ router.post('/', async (req, res) => {
                 }
             }
         )
+        res.render
         if (!foundUser) {
             return res.status(401).json('invalid login credentials')
         }

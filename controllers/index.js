@@ -8,20 +8,40 @@ const loginRoutes = require('./loginRoutes')
 const createAccountRoutes = require('./createAccountRoutes')
 const chatRoutes = require('./videoChatRoute')
 
-//Home page route
+//Logout route
+// router.get('/logout', (req, res) => {
+//     // req.session.destroy();
+//     res.json({msg:"logged out!"})
+// });
 router.get('/', (req, res) => {
-    res.render('landing')
+    if (!req.session.user){
+        res.render('landing')
+    } else {
+        res.render('videochat')
+    }
+});
+router.post('/test', (req, res) => {
+    if (req.session.user){
+        return res.json({msg: "logged in"})
+    } else {
+        return res.json({msg: "logged out"})
+    }
 });
 
-//Logout route
-router.get('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
     req.session.destroy();
-    res.json({msg:"logged out!"})
-});
+    res.json({ msg: "logged out!" })
+})
+
+router.get("/readsession",(req,res)=>{
+    res.json(req.session)
+})
+
+
 
 //use other routes
-router.use("/login",loginRoutes)
-router.use("/create-account",createAccountRoutes)
-router.use("/videochat",chatRoutes)
+router.use("/login", loginRoutes)
+router.use("/create-account", createAccountRoutes)
+router.use("/videochat", chatRoutes)
 
 module.exports = router;
