@@ -49,8 +49,6 @@ const myPeer = new Peer(undefined, {
 
 //creating video element and muting audio
 const myVideo = document.createElement("video");
-const videoName = document.createElement('h1')
-videoName.textContent = userName
 myVideo.muted = true;
 const peers = {};
 //collecting the users video and audio and then passing it to the addstream function
@@ -70,9 +68,12 @@ navigator.mediaDevices
     });
   });
   
-  socket.on("user-connected", (userId) => {
+  socket.on("user-connected", (userId, userName) => {
     setTimeout(() => {
-      connectToNewUser(userId, stream);
+      const item = document.createElement("li");
+      item.textContent = (`${userName} has joined the chat room...`)
+      messages.appendChild(item)
+      connectToNewUser(userId, stream, userName);
     }, 2000);
   });
 });
@@ -85,7 +86,7 @@ socket.on("user-disconnected", (userId) => {
 // As soon as we connect to the server and get back the id, we going to run this code and pass
 // '/videochat' set to 'videochat/:${roomID}'
 myPeer.on("open", (id) => {
-  socket.emit("join-room", "/videochat", `${id}`);
+  socket.emit("join-room", "/videochat", `${id}`, `${userName}`);
 });
 
 //takes the video element we created AND the stream object we get from the getUserMediaFunction
@@ -99,13 +100,28 @@ const addStream = (video, stream) => {
   //appends video to html
   videoDisplay.append(video);
 };
-
+//Adding User Stream
+const addUserStream = (video, stream, userName) => {
+  //setting video element to the stream we created
+  video.srcObject = stream;
+  //event listener to start video when a stream is added to it
+  video.addEventListener("loadedmetadata", () => {
+    video.play();
+  });
+  //appends video to html
+  const vidName = document.createElement('div')
+  vidName.textContent = userName
+  
+  vidName.append(video)
+  console.log(video)
+  videoDisplay.append(vidName);
+};
 //connects the new user into this call
-const connectToNewUser = (userId, stream) => {
+const connectToNewUser = (userId, stream, userName) => {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    addStream(video, userVideoStream);
+    addUserStream(video, userVideoStream, userName);
   });
   // close video when user leaves the call
   call.on("close", () => {
@@ -113,8 +129,6 @@ const connectToNewUser = (userId, stream) => {
   });
   peers[userId] = call;
 };
-
-
 
 //logout function
 async function logout(){
@@ -128,8 +142,6 @@ async function logout(){
   } else {
     alert(response.statusText);
   };
-
 };
-
 //event listener
 document.getElementById('logout-btn').addEventListener("click", logout);
