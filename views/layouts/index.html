@@ -1,5 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- link bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <!-- link jquery and moment?-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../public/css/homepage.css" />
+  <title>Viva Chat</title>
+</head>
+
+<body>
+  <header class="text-center text-white">
+    <h1 class="pt-3">Viva Chat</h1>
+
+    <!-- create login or logouit link -->
+
+    <!-- <nav> -->
+    <!-- Conditionally render login or logout links -->
+    <!-- {{#if logged_in}}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,6 +55,63 @@
     />
     <link rel="stylesheet" href="../../public/css/homepage.css" />
     <title>Viva Chat</title>
+    <style>
+      #video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        grid-auto-rows: 300px;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #input {
+        border: none;
+        padding: 0 1rem;
+        flex-grow: 1;
+        border-radius: 2rem;
+        margin: 0.25rem;
+      }
+
+      #input:focus {
+        outline: none;
+      }
+
+      #form {
+        background: rgba(0, 0, 0, 0.15);
+        padding: 0.25rem;
+        display: flex;
+        height: 3rem;
+        box-sizing: border-box;
+        backdrop-filter: blur(10px);
+      }
+      #form > button {
+        background: #333;
+        border: none;
+        padding: 0 1rem;
+        margin: 0.25rem;
+        border-radius: 3px;
+        outline: none;
+        color: #fff;
+      }
+
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages > li {
+        padding: 0.5rem 1rem;
+      }
+
+      #messages > li:nth-child(odd) {
+        background: #efefef;
+      }
+    </style>
   </head>
 
   <body>
@@ -44,56 +129,67 @@
         <a href="/login">login</a>
         {{/if}}
       </nav> -->
-    </header>
+  </header>
+
+  <main class="text-center m-0">
+
+
+
+
     <div class="jumbotron text-center m-0">
-      <!-- {{{ body }}} -->
-    </div>
-    <footer class="bg-dark text-center text-white">
-      <!-- Grid container -->
-      <div class="container pt-4">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-          <!-- Linkedin -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-          <!-- Github -->
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-          <a
-            class="btn btn-outline-light btn-floating m-1"
-            href="#!"
-            role="button"
-            ><i class="fab fa-github"></i
-          ></a>
-        </section>
+      <div class="row justify-content-center pt-3">
+        <div class="col-md-6 shadow-lg p-3 mb-5 rounded">
+
+          <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <h2 class="text-dark">Login</h2>
+              <form class="form login-form">
+                <div class="form-group text-dark">
+                  <label for="email-login">email:</label>
+                  <input class="form-input" type="text" id="email-login" />
+                </div>
+                <div class="form-group text-dark">
+                  <label for="password-login">password:</label>
+                  <input class="form-input" type="password" id="password-login" />
+                </div>
+                <div class="form-group login-button-formEl">
+                  <button class="btn btn-primary" type="submit">login</button>
+                </div>
+              </form>
+  
+            </div>
+            <div class="col-md-4"></div>
+
+          </div>
+
+
+
+        </div>
       </div>
-    </footer>
-  </body>
-  <script src="./assets/script.js"></script>
+    </div>
+    <script src="js/login.js"></script>
+
+
+
+
+  </main>
+
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container pt-4">
+      <!-- Section: Social media -->
+      <section class="mb-4 bg dark">
+        <!-- <p>Created by Justus Brown, Gabriel Warner, and Zhao-Ming Zhong in 2022</p> -->
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+
+      </section>
+    </div>
+  </footer>
+</body>
+<script src="./assets/script.js"></script>
+
 </html>
