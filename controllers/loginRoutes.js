@@ -22,6 +22,7 @@ router.post('/', async (req, res) => {
                 }
             }
         )
+        res.render
         if (!foundUser) {
             return res.status(401).json('invalid login credentials')
         }
