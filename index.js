@@ -47,12 +47,12 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
       socket.to(roomId).emit("user-disconnected", userId);
     });
+    socket.on("chat message", async(msg) => {
+      console.log("message: " + msg);
+      io.to(roomId).emit("chat message", (msg));
+    });
   });
   //when the server receives a chat message event it emits the msg object to everyone
-  socket.on("chat message", async(msg) => {
-    console.log("message: " + msg);
-    io.emit("chat message", (msg));
-  });
 });
 
 // Sets up the Express app to handle data parsing

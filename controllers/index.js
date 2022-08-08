@@ -7,6 +7,9 @@ const bcrypt = require('bcrypt')
 const loginRoutes = require('./loginRoutes')
 const createAccountRoutes = require('./createAccountRoutes')
 const chatRoutes = require('./videoChatRoute')
+const room1 = require('./room1')
+const room2 = require('./room2')
+const room3 = require('./room3')
 
 //Logout route
 // router.get('/logout', (req, res) => {
@@ -43,5 +46,8 @@ router.get("/readsession",(req,res)=>{
 router.use("/login", loginRoutes)
 router.use("/create-account", createAccountRoutes)
 router.use("/videochat", chatRoutes)
+router.use("/room1", room1)
+router.use("/room2", room2)
+router.use("/room3", room3)
 
 module.exports = router;
