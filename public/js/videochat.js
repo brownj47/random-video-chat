@@ -49,6 +49,8 @@ const myPeer = new Peer(undefined, {
 
 //creating video element and muting audio
 const myVideo = document.createElement("video");
+const videoName = document.createElement('h1')
+videoName.textContent = userName
 myVideo.muted = true;
 const peers = {};
 //collecting the users video and audio and then passing it to the addstream function
@@ -63,7 +65,7 @@ navigator.mediaDevices
     call.answer(stream);
     const video = document.createElement("video");
     call.on("stream", (userVideoStream) => {
-      addStream(video, userVideoStream);
+      addUserStream(video, userVideoStream);
       windows.reload();
     });
   });
@@ -73,7 +75,7 @@ navigator.mediaDevices
       const item = document.createElement("li");
       item.textContent = (`${userName} has joined the chat room...`)
       messages.appendChild(item)
-      connectToNewUser(userId, stream, userName);
+      connectToNewUser(userId, stream,);
     }, 2000);
   });
 });
@@ -98,10 +100,13 @@ const addStream = (video, stream) => {
     video.play();
   });
   //appends video to html
-  videoDisplay.append(video);
+  const vidName = document.createElement('p')
+  vidName.textContent = userName
+  vidName.append(video)
+  videoDisplay.append(vidName);
 };
-//Adding User Stream
-const addUserStream = (video, stream, userName) => {
+
+const addUserStream = (video, stream) => {
   //setting video element to the stream we created
   video.srcObject = stream;
   //event listener to start video when a stream is added to it
@@ -109,19 +114,16 @@ const addUserStream = (video, stream, userName) => {
     video.play();
   });
   //appends video to html
-  const vidName = document.createElement('div')
-  vidName.textContent = userName
-  
-  vidName.append(video)
-  console.log(video)
-  videoDisplay.append(vidName);
+
+  videoDisplay.append(video);
 };
+
 //connects the new user into this call
-const connectToNewUser = (userId, stream, userName) => {
+const connectToNewUser = (userId, stream) => {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    addUserStream(video, userVideoStream, userName);
+    addUserStream(video, userVideoStream);
   });
   // close video when user leaves the call
   call.on("close", () => {
