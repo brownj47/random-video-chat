@@ -1,37 +1,46 @@
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" href="/videochat">Main Room</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/room2">Room 2</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/room3">Room 3</a>
-  </li>
-    </li>
-        <li class="nav-item">
-      <a class="nav-link" id="random-room" href="">Room Roulette</a>
-    </li> 
-</ul>
+<nav class="nav-height">
+  <div class="container-fluid container-height">
+    <div class="row">
+      <div class="col">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" id="random-room" href="/videochat">Room Roulette</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/room1">Room 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/room2">Room 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/room3">Room 3</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="row justify-content-end">
+          <button class="btn btn-primary btn-height" type="submit" id="logout-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<div class="jumbotron mb-0">
 
-  <div class="row">
-
-    <div class="col-9">
+<div class="container-fluid container-height">
+  <div class="row h-100">
+    <div class="col-8">
       <section id="video-grid"></section>
     </div>
-
-    <div class="col">
+    <div class="col-4">
       <div class="chatBox">
-        <p></p>
         <div class="card" style="width: 22rem; height: 30rem">
-          <h6 class="card-subtitle mb-2 text-muted chat-box-title" style="height: 1rem">
+          <h6 class="card-subtitle text-muted chat-box-title" style="height: 1rem">
             Chat Box
           </h6>
           <div class="card-body" id="card-body">
             {{!-- setting the data attribute as the username so we can grab this in the DOM --}}
-            <ul data-name="{{user.username}}" id="messages"></ul>
+            <ul data-name="{{username}}" id="messages"></ul>
           </div>
           <form id="form" action="">
             <input id="input" autocomplete="off" /><button>Send</button>
@@ -39,16 +48,8 @@
         </div>
       </div>
     </div>
-
   </div>
-
-  <div class="row justify-content-center">
-    <button class="btn btn-primary" type="submit" id="logout-btn">Logout</button>
-  </div>
-
 </div>
-
-{{!-- <div id="grid"></div> --}}
 
 <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
