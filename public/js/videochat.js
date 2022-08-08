@@ -8,25 +8,16 @@ const messages = document.getElementById("messages");
 const userName = messages.getAttribute('data-name')
 
 
-//when user clicks send then it grabs the value of input and emits it
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-  if (input.value) {
-    //Sending the message AND the name of the User to the server
-    socket.emit("chat message", ({msg:input.value, name:userName}));
-    input.value = "";
-  }
-});
 
 socket.on("chat message", function (msg) {
-//sets new date object
-const date = new Date();
-const pm = date.getHours() >= 12;
-let hour12 = date.getHours() % 12;
-if (!hour12) 
+  //sets new date object
+  const date = new Date();
+  const pm = date.getHours() >= 12;
+  let hour12 = date.getHours() % 12;
+  if (!hour12) 
   hour12 += 12;
-//if minute is less than 10 it will add 0 in front, other wise it looks weird ex. 2:1 pm now looks like 2:01pm
-const minute = (date.getMinutes()<10?'0':'') + date.getMinutes()
+  //if minute is less than 10 it will add 0 in front, other wise it looks weird ex. 2:1 pm now looks like 2:01pm
+  const minute = (date.getMinutes()<10?'0':'') + date.getMinutes()
   //creates document that will hold user message
   const item = document.createElement("li");
   //setting text content to the name and msg using object key pairs
@@ -35,12 +26,7 @@ const minute = (date.getMinutes()<10?'0':'') + date.getMinutes()
   cardBody.scrollTop = cardBody.scrollHeight
 });
 
-//creates new peer object giving current host and setting id to undefined.
-// const myPeer = new Peer(undefined, {
-//     secure: true,
-//     host: 'testrandomvideog10.herokuapp.com',
-//     port: '3001'
-// })
+
 const myPeer = new Peer(undefined, {
   secure: true,
   host: "0.peerjs.com",
@@ -61,6 +47,7 @@ navigator.mediaDevices
 })
 .then((stream) => {
   addStream(myVideo, stream);
+
   myPeer.on("call", (call) => {
     call.answer(stream);
     const video = document.createElement("video");
@@ -70,6 +57,7 @@ navigator.mediaDevices
     });
   });
   
+  
   socket.on("user-connected", (userId, userName) => {
     setTimeout(() => {
       const item = document.createElement("li");
@@ -78,11 +66,11 @@ navigator.mediaDevices
       connectToNewUser(userId, stream,);
     }, 2000);
   });
+  socket.on("user-disconnected", (userId) => {
+    if (peers[userId]) peers[userId].close();
+  });
 });
 
-socket.on("user-disconnected", (userId) => {
-  if (peers[userId]) peers[userId].close();
-});
 
 //TODO:
 // As soon as we connect to the server and get back the id, we going to run this code and pass
@@ -114,7 +102,7 @@ const addUserStream = (video, stream) => {
     video.play();
   });
   //appends video to html
-
+  
   videoDisplay.append(video);
 };
 
@@ -137,7 +125,7 @@ async function logout(){
   const response = await fetch('/logout', {
     method: 'POST'
   });
-
+  
   if (response.ok) {
     // If successful, redirect the browser to the profile page
     document.location.replace('/'); 
@@ -147,3 +135,13 @@ async function logout(){
 };
 //event listener
 document.getElementById('logout-btn').addEventListener("click", logout);
+
+//when user clicks send then it grabs the value of input and emits it
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (input.value) {
+    //Sending the message AND the name of the User to the server
+    socket.emit("chat message", ({msg:input.value, name:userName}));
+    input.value = "";
+  }
+});
