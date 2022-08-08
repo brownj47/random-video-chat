@@ -1,34 +1,32 @@
-<div class="jumbotron text-center m-0">
+<div class="container mt-5">
   <div class="row justify-content-center pt-3">
     <div class="col-md-6 shadow-lg p-3 mb-5 rounded">
-      <div class="row">
+      <div class="row justify-content-center">
 
-      <div class="col-4"></div>
-      <div class="col-4">
-      <h2 class="text-dark">Signup</h2>
-      <form class="form signup-form">
-        <div class="form-group text-dark">
-          <label for="name-signup">Name:</label>
-          <input class="form-input" type="text" id="name-signup" />
+        <div class="col-4">
+          <h2 class="text-dark">Signup</h2>
+          <form class="form signup-form">
+            <div class="form-group text-dark row justify-content-center">
+              {{!-- <label for="name-signup">Name:</label> --}}
+              <input class="form-input" type="text" id="name-signup" placeholder="Insert Your Name" />
+            </div>
+            <div class="form-group text-dark row justify-content-center">
+              {{!-- <label for="email-signup">Email:</label> --}}
+              <input class="form-input" type="text" id="email-signup" placeholder="Insert Your Email" />
+            </div>
+            <div class="form-group text-dark row justify-content-center">
+              {{!-- <label for="password-signup">Password:</label> --}}
+              <input class="form-input" type="password" id="password-signup" placeholder="Insert Your Password" />
+            </div>
+            <div class="form-group form-button">
+              <button class="btn btn-primary" type="submit">Signup</button>
+            </div>
+          </form>
         </div>
-        <div class="form-group text-dark">
-          <label for="email-signup">Email:</label>
-          <input class="form-input" type="text" id="email-signup" />
-        </div>
-        <div class="form-group text-dark">
-          <label for="password-signup">Password:</label>
-          <input class="form-input" type="password" id="password-signup" />
-        </div>
-        <div class="form-group form-button">
-          <button class="btn btn-primary" type="submit">Signup</button>
-        </div>
-      </form>
 
-      </div>
-      <div class="col-4"></div>
       </div>
     </div>
   </div>
 </div>
-{{! edit here }}
+
 <script src="js/create-account.js"></script>
