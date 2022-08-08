@@ -4,6 +4,7 @@ const form = document.getElementById("form");
 const cardBody = document.getElementById("card-body");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
+const randomRoom = document.getElementById('random-room')
 //here we are grabbing the users name that was attached to the element via handle bars
 const userName = messages.getAttribute('data-name')
 
@@ -27,7 +28,7 @@ socket.on("chat message", function (msg) {
 });
 
 
-const myPeer = new Peer(undefined, {
+const myPeer = new Peer(userName, {
   secure: true,
   host: "0.peerjs.com",
   port: "443",
@@ -48,7 +49,10 @@ navigator.mediaDevices
 .then((stream) => {
   addStream(myVideo, stream);
 
+  //emmited when a remote peer attempts to call this user
   myPeer.on("call", (call) => {
+    //answers the call and gives our own stream
+    console.log(call.userId)
     call.answer(stream);
     const video = document.createElement("video");
     call.on("stream", (userVideoStream) => {
@@ -57,7 +61,7 @@ navigator.mediaDevices
     });
   });
   
-  
+  //listening for when a user is connected to the room
   socket.on("user-connected", (userId, userName) => {
     setTimeout(() => {
       const item = document.createElement("li");
@@ -107,8 +111,9 @@ const addUserStream = (video, stream) => {
 };
 
 //connects the new user into this call
-const connectToNewUser = (userId, stream) => {
-  const call = myPeer.call(userId, stream);
+const connectToNewUser = (userId, stream, userName) => {
+  options = {metadata: {"name":`${userName}`}};
+  const call = myPeer.call(userId, stream, options);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
     addUserStream(video, userVideoStream);

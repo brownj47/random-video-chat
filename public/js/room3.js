@@ -4,6 +4,7 @@ const form = document.getElementById("form");
 const cardBody = document.getElementById("card-body");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
+const randomRoom = document.getElementById('random-room')
 //here we are grabbing the users name that was attached to the element via handle bars
 const userName = messages.getAttribute('data-name')
 
