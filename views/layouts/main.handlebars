@@ -21,37 +21,41 @@
   <title>Viva Chat</title>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-  <header class="text-center text-white">
-    <h1 class="pt-3">Viva Chat</h1>
-    <!-- create login or logout link -->
+{{!--
 
-    <nav>
-      {{!-- Conditionally render login or logout links
-      {{#if logged_in}}
-      <a href="/profile">profile</a> |
-      <button class="no-button" id="logout">logout</button>
-      {{else}}
-      <a href="/login">login</a>
-      {{/if}} --}}
+<body class="d-flex flex-column min-vh-100"> --}}
 
-    </nav>
-  </header>
-  <main class="text-center m-0">
-    {{{ body }}}
-  </main>
-  <footer class="mt-auto bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container pt-4">
-      <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
-      <!-- Github -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
-</body>
+  <body>
+    <header class="text-center text-white">
+      <h1 class="pt-3">Viva Chat</h1>
+      <!-- create login or logout link -->
+
+      <nav>
+        {{!-- Conditionally render login or logout links
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}} --}}
+
+      </nav>
+    </header>
+    <main class="text-center m-0">
+      {{{ body }}}
+    </main>
+    <footer class="fixed-bottom bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container pt-4">
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"></script>
+  </body>
 
 </html>
