@@ -39,4 +39,15 @@ router.get('/all', async (req, res) => {
     };
 });
 
+router.get('/chat/:id',async (req,res) => {
+    if (!req.session.user) {
+        return res.render('login');
+    };
+    try{
+        return res.render('random', req.session.user);
+    }catch (err) {
+        console.log(err);
+    }
+})
+
 module.exports = router;
