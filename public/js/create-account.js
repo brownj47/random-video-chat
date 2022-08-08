@@ -19,6 +19,8 @@ const signupFormHandler = async (event) => {
         } else {
             alert(response.statusText);
         };
+    } else{
+        alert('Please enter a username, email, and password.')
     };
 };
 
