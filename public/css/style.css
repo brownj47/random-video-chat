@@ -1,24 +1,120 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+.jumbotron {
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 50vh;
 }
 
-.no-button {
-  background: none;
+.text-white,
+.btn,
+.btn-lg {
+  background-color: blueviolet;
+}
+
+header,
+footer {
+  height: 10vh;
+}
+
+/* #grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-rows: 300px;
+} */
+
+/* video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: red;
+} */
+
+.form-group {
+  text-align: right;
+}
+.form-button {
+  text-align: center;
+}
+
+#video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-rows: 300px;
+  grid-gap: 1.5rem;
+  justify-content: center;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: 30px;
+}
+
+#input {
   border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+#input:focus {
+  outline: none;
+}
+
+#form > button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
   padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
 }
 
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
+#messages > li {
+  padding: 0.5rem 1rem;
 }
 
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
+#messages > li:nth-child(odd) {
+  background: #efefef;
+}
+.card {
+  margin: 2em;
+}
+.card-body {
+  margin: 0;
+  padding-bottom: 3rem;
+  position: relative;
+  overflow: scroll;
+}
+#form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+}
+.chat-box-title {
+  padding: 1em;
+  margin: 1em;
+}
+
+li {
+  color: #212529;
+  text-align: left;
 }
