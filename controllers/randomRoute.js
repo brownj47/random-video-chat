@@ -44,18 +44,7 @@ router.get('/chat/:id',async (req,res) => {
         return res.render('login');
     };
     try{
-        const userData = await User.findOne({
-            where: {
-              email: req.session.user.email
-            },
-          });
-        if(!userData) {
-            res.status(404).json({message: 'No User with this id!'});
-            return;
-        }
-        //serialize data
-        const user = userData.get({ plain: true });
-        return res.render('random', user);
+        return res.render('random', req.session.user);
     }catch (err) {
         console.log(err);
     }
