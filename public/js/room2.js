@@ -72,6 +72,9 @@ navigator.mediaDevices
   
   socket.on("user-connected", (userId) => {
     setTimeout(() => {
+      const item = document.createElement("li");
+      item.textContent = (`${userName} has joined the chat room...`)
+      messages.appendChild(item)
       connectToNewUser(userId, stream);
     }, 2000);
   });
