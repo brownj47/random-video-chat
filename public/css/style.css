@@ -25,6 +25,7 @@ footer {
 main {
   height: 80vh;
 }
+
 input {
   text-align: center;
 }
@@ -34,6 +35,16 @@ input {
 }
 .form-button {
   text-align: center;
+}
+
+.nav-height,
+.btn-height {
+  height: 5%;
+  background-color: bisque;
+}
+
+.container-height {
+  height: 95%;
 }
 
 #video-grid {
