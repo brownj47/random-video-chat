@@ -12,6 +12,19 @@
   background-color: blueviolet;
 }
 
+.btn-sizing {
+  width: 198px;
+  height: 30px;
+}
+
+header,
+footer {
+  height: 10vh;
+}
+
+main {
+  height: 80vh;
+}
 input {
   text-align: center;
 }
