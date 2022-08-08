@@ -7,6 +7,11 @@ const sequelize = require('../config/connection.js');
 class Room extends Model { };
 
 Room.init({
+    id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        primaryKey:true
+    },
     occupants: {
         type: DataTypes.INTEGER,
         defaultValue:1
