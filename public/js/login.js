@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/videochat'); 
+      document.location.replace('random/chat/videochat'); 
     } else {
       alert(response);
     };

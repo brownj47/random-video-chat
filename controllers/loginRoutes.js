@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     if (!req.session.user){
         return res.render('login')  
     } else {
-        return res.render('videochat')
+        return res.render('random')
     }
 
 });

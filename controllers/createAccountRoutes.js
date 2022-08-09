@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     if (!req.session.user){
         res.render('signup')  
     } else {
-        res.render('videochat')
+        res.render('random')
     }
 });
 
