@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 // import sequelize connection
 const sequelize = require('../config/connection.js');
 
-// create a user table with id, username, email, password, timestamps
+// create a user table with id, occupants, and timestamps
 class Room extends Model { };
 
 Room.init({
