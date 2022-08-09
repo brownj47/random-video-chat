@@ -24,5 +24,6 @@ const loginFormHandler = async (event) => {
   };
 };
 
+//listen for form submission
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
