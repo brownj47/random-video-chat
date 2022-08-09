@@ -36,7 +36,8 @@ To get started in the development environment, follow the following steps:
 
 ## Usage
 
-To use our application, either set it up locally using the above installation guide, or follow this [link](https://testrandomvideog10.herokuapp.com/). Then, create an account. You will be redirected to the main chat room, and can switch rooms from there by clicking the buttons in the navbar. To see your video, open a new tab in a private window, create another account and then join the room you are in on the other browser. There should now be two video streams on your page. 
+To use our application, either set it up locally using the above installation guide, or follow this [link](https://testrandomvideog10.herokuapp.com/). 
+Then, create an account. You will be redirected to the main chat room, and can switch rooms from there by clicking the buttons in the navbar. To see your video, open a new tab in a private window, create another account and then join the room you are in on the other browser. There should now be two video streams on your page. 
 
 If you opt to use the online version, you can have a friend join the chat rather than using a separate browser. All they need to do is login and join the room you are in. 
 
