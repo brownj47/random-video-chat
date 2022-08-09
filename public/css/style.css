@@ -6,6 +6,14 @@
   height: 100vh;
 } */
 
+h1 {
+  font-size: 5vh;
+}
+
+.nav-link {
+  font-size: 1.75vh;
+}
+
 .text-white,
 .btn,
 .btn-lg {
@@ -15,6 +23,7 @@
 .btn-sizing {
   width: 198px;
   height: 30px;
+  line-height: normal;
 }
 
 header,
@@ -33,6 +42,7 @@ input {
 .form-group {
   text-align: right;
 }
+
 .form-button {
   text-align: center;
 }
@@ -59,7 +69,6 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   border-radius: 30px;
 }
 
@@ -67,6 +76,7 @@ video {
   border: none;
   padding: 0 1rem;
   flex-grow: 1;
+  flex-shrink: 1;
   border-radius: 2rem;
   margin: 0.25rem;
 }
@@ -98,15 +108,18 @@ video {
 #messages > li:nth-child(odd) {
   background: #efefef;
 }
+
 .card {
   margin: 2em;
 }
+
 .card-body {
   margin: 0;
   padding-bottom: 3rem;
   position: relative;
   overflow: scroll;
 }
+
 #form {
   background: rgba(0, 0, 0, 0.15);
   padding: 0.25rem;
@@ -119,6 +132,7 @@ video {
   box-sizing: border-box;
   backdrop-filter: blur(10px);
 }
+
 .chat-box-title {
   padding: 1em;
   margin: 1em;
@@ -127,4 +141,23 @@ video {
 li {
   color: #212529;
   text-align: left;
+}
+
+a {
+  color: black;
+}
+
+a:link,
+a:visited,
+a:active,
+#logout-btn:link,
+#logout-btn:visited,
+#logout-btn:active {
+  text-decoration: none;
+}
+
+a:hover,
+#logout-btn:hover {
+  text-decoration: underline;
+  color: blueviolet;
 }
