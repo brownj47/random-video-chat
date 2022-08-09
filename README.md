@@ -2,13 +2,14 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+This application allows a user to videochat/instant message with a friend, or join randomized rooms to make new friends. 
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
 
+In this project, we learned how data is passed over the internet, how to initiate connections between browsers, how to create user sessions, how to protect routes so that only authenticated users have access, and how to use a templating language (handlebars). 
+
+We wanted to use a technology we had not yet talked about in class, so we decided on WebRTC(peer.js) and WebSockets(socket.io). 
+
+If you would like to try the application out, please visit the link below. 
 
 Deployed Application: https://vivachat.herokuapp.com/
 
@@ -36,15 +37,17 @@ To get started in the development environment, follow the following steps:
 
 ## Usage
 
-To use our application, either set it up locally using the above installation guide, or follow this [link](https://vivachat.herokuapp.com/). 
-Then, create an account. You will be redirected to the main chat room, and can switch rooms from there by clicking the buttons in the navbar. To see your video, open a new tab in a private window, create another account and then join the room you are in on the other browser. There should now be two video streams on your page. 
+To use our application, either set it up locally using the above installation guide, or follow the [link](https://vivachat.herokuapp.com) above to access the deployed app. 
+Then, create an account. You will be redirected to the main chat room, and can switch rooms from there by clicking the buttons in the navbar. 
+You will need to allow the browser to access your video.
+To see your video, open a new tab in a private window, create another account and then join the room(Main, Room 1, Room 2, Room 3) you are in on the other browser. There should now be two video streams on your page. 
 
 If you opt to use the online version, you can have a friend join the chat rather than using a separate browser. All they need to do is login and join the room you are in. 
 
 The Room Roulette button will place you in a random room, and the next user to join Random Roulette should be paired with you. 
 
 
-![Alt text]()
+![Alt text](./VivaChatScreenshot.png)
 ## Credits
 
 Created by:
