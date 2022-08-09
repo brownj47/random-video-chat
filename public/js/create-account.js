@@ -15,7 +15,7 @@ const signupFormHandler = async (event) => {
 
 
         if (response.ok) {
-            document.location.replace('/videochat');
+            document.location.replace('/random/chat/videochat');
         } else {
             alert(response.statusText);
         };
