@@ -66,7 +66,7 @@ navigator.mediaDevices
       });
     });
 
-    socket.on("user-connected", (userId) => {
+    socket.on("user-connected", (userId, userName) => {
       setTimeout(() => {
         const item = document.createElement("li");
         item.textContent = (`${userName} has joined the chat room...`)
@@ -80,14 +80,12 @@ socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
 });
 
-//TODO:
-// As soon as we connect to the server and get back the id, we going to run this code and pass
-// '/videochat' set to 'videochat/:${roomID}'
+
 myPeer.on("open", (id) => {
   let url = window.location.href
   const urlSplit = url.split('/')
   url = urlSplit[urlSplit.length - 1]
-  socket.emit("join-room", `/random/chat/${url}`, `${id}`);
+  socket.emit("join-room", `/random/chat/${url}`, `${id}`, `${userName}`);
 });
 
 //takes the video element we created AND the stream object we get from the getUserMediaFunction
