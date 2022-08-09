@@ -56,13 +56,16 @@ navigator.mediaDevices
     audio: true,
   })
   .then((stream) => {
+    // current user add stream
     addStream(myVideo, stream);
     myPeer.on("call", (call) => {
       call.answer(stream);
       const video = document.createElement("video");
+      // when a new user joins, add stream and reload()
       call.on("stream", (userVideoStream) => {
         addStream(video, userVideoStream);
-        windows.reload();
+        window.reload();
+        // console.log("hello")
       });
     });
 
@@ -74,11 +77,14 @@ navigator.mediaDevices
         connectToNewUser(userId, stream);
       }, 2000);
     });
+
+    socket.on("user-disconnected", (userId) => {
+      if (peers[userId]) peers[userId].close();
+      location.reload()
+    });
+
   });
 
-socket.on("user-disconnected", (userId) => {
-  if (peers[userId]) peers[userId].close();
-});
 
 
 myPeer.on("open", (id) => {
@@ -128,7 +134,6 @@ async function logout() {
   } else {
     alert(response.statusText);
   };
-
 };
 
 randomRoom.addEventListener('click', (e) => {
