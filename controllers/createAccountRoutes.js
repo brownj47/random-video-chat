@@ -1,31 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel.js')
-const bcrypt = require('bcrypt')
 
 // create account page
 router.get('/', (req, res) => {
-
-    if (!req.session.user){
-        res.render('signup')  
+    //prevent access and render videochat page if logged in
+    if (!req.session.user) {
+        res.render('signup');
     } else {
-        res.render('videochat')
-    }
+        res.render('random');
+    };
 });
 
+
+//route to create account
 router.post('/', (req, res) => {
     console.log(req.body);
     //add user to database
     User.create(req.body).then(data => {
-        req.session.user = { // set session details
+
+        // set session details
+        req.session.user = {
             id: data.id,
             username: data.username,
             email: data.email
-        }
-        res.json(data)
+        };
+
+        res.json(data);
 
     }).catch(err => {
-        res.status(500).json({ msg: "ERROR", err })
+        res.status(500).json({ msg: "ERROR", err });
     });
 });
 
