@@ -4,7 +4,7 @@ const form = document.getElementById("form");
 const cardBody = document.getElementById("card-body");
 const input = document.getElementById("input");
 const messages = document.getElementById("messages");
-let randomRoom = document.getElementById('random-room')
+const randomRoom = document.getElementById('random-room')
 //here we are grabbing the users name that was attached to the element via handle bars
 const userName = messages.getAttribute('data-name')
 
@@ -134,15 +134,6 @@ async function logout(){
   };
 
 };
-randomRoom.addEventListener('click', randomRoom =(e) => {
-  e.preventDefault()
-  fetch('/random')
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data)
-    document.location.replace(`/random/chat/${data.id}`)
-  });
-})
 
 //event listener
 document.getElementById('logout-btn').addEventListener("click", logout);
