@@ -85,7 +85,7 @@ input {
 
 .nav-height,
 .btn-height {
-  height: 5%;
+  /* height: 5%; */
   background-color: #343a40;
 }
 
@@ -156,9 +156,9 @@ h6 {
 }
 
 .card {
-  margin: 2em;
+  margin: 2em auto;
   border-style: red solid 10px;
-  height: 100%;
+  height: 90%;
   white-space: nowrap;
 }
 
@@ -236,4 +236,10 @@ footer {
 .footer-container {
   height: 100%;
   padding: 2.5vh;
+}
+
+@media screen and (max-width: 991px) {
+  .card{
+    height: 75%;
+  }  
 }
