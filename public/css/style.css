@@ -162,11 +162,12 @@ h6 {
 }
 
 .card-body {
-  margin: 0;
+  margin-bottom: 2rem;
   padding-bottom: 3rem;
   position: relative;
   overflow: scroll;
   white-space: nowrap;
+  
 }
 #messages {
   height: 100%;
