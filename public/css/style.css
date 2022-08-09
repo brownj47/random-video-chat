@@ -70,6 +70,10 @@ p {
 .nav-link {
   font-size: 1.75vh;
 }
+.nav-item {
+  list-style-type: none;
+  font-weight:450;
+}
 
 input {
   text-align: center;
@@ -115,6 +119,7 @@ video {
   flex-shrink: 1;
   border-radius: 2rem;
   margin: 0.25rem;
+  width: 60%;
 }
 
 #input:focus {
@@ -159,6 +164,7 @@ h6 {
   margin: 2em auto;
   border-style: red solid 10px;
   height: 90%;
+  width: 85%;
   white-space: nowrap;
 }
 
@@ -202,6 +208,11 @@ h6 {
 .chat-box-title {
   padding: 1vh;
   margin: 1vh;
+  height: 1rem; 
+  color: black;
+}
+.chat-box {
+  height: 80%;
 }
 
 li {
