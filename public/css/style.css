@@ -6,7 +6,7 @@
   height: 100vh;
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap");
 
 /* Header */
 .pt-3 {
@@ -14,7 +14,8 @@
   font-weight: 800;
   color: white;
 }
-.col-4{
+
+.col-4 {
   height: 100%;
 }
 
@@ -23,15 +24,20 @@ a {
   font-weight: 400;
   color: white;
 }
+
 h1 {
   font-size: 5vh;
   margin-bottom: 0;
+  padding: 0;
 }
+
 p {
   font-family: sora;
 }
-header{
+
+header {
   padding: 1rem;
+  height: 10vh;
 }
 
 .nav-link {
@@ -44,35 +50,25 @@ header{
   background-color: blueviolet;
   font-family: Sora;
 }
+
 .btn {
   border: none;
-}
-.btn {
   color: white;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: blueviolet;
 }
-.nav-height {
-  
+
+/* Body */
+main {
+  height: 80vh;
 }
-h1 {
-  padding: 0;
-}
+
 .btn-sizing {
   width: 198px;
   height: 30px;
   line-height: normal;
-}
-
-
-footer {
-  height: 10vh;
-}
-
-main {
-  height: 80vh;
 }
 
 input {
@@ -106,8 +102,8 @@ input {
 }
 
 video {
-  width: 100%;
-  height: 100%;
+  width: 32vh;
+  height: 32vh;
   object-fit: cover;
   border-radius: 30px;
 }
@@ -125,17 +121,6 @@ video {
   outline: none;
 }
 
-#form > button {
-  background: #333;
-  border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
-  font-family: Sora;
-}
-
 h6 {
   font-family: Sora;
 }
@@ -149,8 +134,12 @@ h6 {
 #messages > li {
   padding: 0.5rem 1rem;
   font-family: Sora;
-  background-color: ;
   border-radius: 10px;
+  white-space: normal;
+  float: left;
+  width: 100%;
+  height: auto;
+  word-wrap: break-word;
 }
 
 #messages > li:nth-child(odd) {
@@ -167,8 +156,8 @@ h6 {
   position: relative;
   overflow: scroll;
   white-space: nowrap;
-  
 }
+
 #messages {
   height: 100%;
   white-space: nowrap;
@@ -187,9 +176,19 @@ h6 {
   backdrop-filter: blur(10px);
 }
 
+#form > button {
+  border: none;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  font-family: Sora;
+  width: 30%;
+}
+
 .chat-box-title {
-  padding: 1em;
-  margin: 1em;
+  padding: 1vh;
+  margin: 1vh;
 }
 
 li {
@@ -214,4 +213,14 @@ a:hover,
 #logout-btn:hover {
   text-decoration: underline;
   color: blueviolet;
+}
+
+/* Footer */
+footer {
+  height: 10vh;
+}
+
+.footer-container {
+  height: 100%;
+  padding: 2.5vh;
 }
