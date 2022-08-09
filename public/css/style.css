@@ -22,9 +22,13 @@ a {
 }
 h1 {
   font-size: 5vh;
+  margin-bottom: 0;
 }
 p {
   font-family: sora;
+}
+header{
+  padding: 1rem;
 }
 
 .nav-link {
@@ -50,14 +54,16 @@ p {
 .nav-height {
   
 }
-
+h1 {
+  padding: 0;
+}
 .btn-sizing {
   width: 198px;
   height: 30px;
   line-height: normal;
 }
 
-header,
+
 footer {
   height: 10vh;
 }
