@@ -6,8 +6,32 @@
   height: 100vh;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap');
+
+/* Header */
+.pt-3 {
+  font-family: Sora;
+  font-weight: 800;
+  color: white;
+}
+.col-4{
+  height: 100%;
+}
+
+a {
+  font-family: Sora;
+  font-weight: 400;
+  color: white;
+}
 h1 {
   font-size: 5vh;
+  margin-bottom: 0;
+}
+p {
+  font-family: sora;
+}
+header{
+  padding: 1rem;
 }
 
 .nav-link {
@@ -18,15 +42,31 @@ h1 {
 .btn,
 .btn-lg {
   background-color: blueviolet;
+  font-family: Sora;
+}
+.btn {
+  border: none;
+}
+.btn {
+  color: white;
 }
 
+.btn:hover{
+  background-color: blueviolet;
+}
+.nav-height {
+  
+}
+h1 {
+  padding: 0;
+}
 .btn-sizing {
   width: 198px;
   height: 30px;
   line-height: normal;
 }
 
-header,
+
 footer {
   height: 10vh;
 }
@@ -50,7 +90,7 @@ input {
 .nav-height,
 .btn-height {
   height: 5%;
-  background-color: bisque;
+  background-color: #343a40;
 }
 
 .container-height {
@@ -93,6 +133,11 @@ video {
   border-radius: 3px;
   outline: none;
   color: #fff;
+  font-family: Sora;
+}
+
+h6 {
+  font-family: Sora;
 }
 
 #messages {
@@ -103,10 +148,13 @@ video {
 
 #messages > li {
   padding: 0.5rem 1rem;
+  font-family: Sora;
+  background-color: ;
+  border-radius: 10px;
 }
 
 #messages > li:nth-child(odd) {
-  background: #efefef;
+  background: rgb(209, 182, 235);
 }
 
 .card {
@@ -114,10 +162,16 @@ video {
 }
 
 .card-body {
-  margin: 0;
+  margin-bottom: 2rem;
   padding-bottom: 3rem;
   position: relative;
   overflow: scroll;
+  white-space: nowrap;
+  
+}
+#messages {
+  height: 100%;
+  white-space: nowrap;
 }
 
 #form {
@@ -144,7 +198,7 @@ li {
 }
 
 a {
-  color: black;
+  color: white;
 }
 
 a:link,

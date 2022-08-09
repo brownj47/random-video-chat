@@ -21,6 +21,8 @@ const socketio = require("socket.io");
 //initiliaze new instance of socket by passing in express http server
 const io = socketio(server);
 
+
+
 //start listening so that on the front end whenever the connection event is triggered it will console log
 
 // io.on('connection', (socket) => {
