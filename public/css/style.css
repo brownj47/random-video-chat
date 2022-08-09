@@ -14,6 +14,9 @@
   font-weight: 800;
   color: white;
 }
+.col-4{
+  height: 100%;
+}
 
 a {
   font-family: Sora;
@@ -163,7 +166,11 @@ h6 {
   padding-bottom: 3rem;
   position: relative;
   overflow: scroll;
-  background-color: ;
+  white-space: nowrap;
+}
+#messages {
+  height: 100%;
+  white-space: nowrap;
 }
 
 #form {
