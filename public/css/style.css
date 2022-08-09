@@ -23,6 +23,9 @@ a {
 h1 {
   font-size: 5vh;
 }
+p {
+  font-family: sora;
+}
 
 .nav-link {
   font-size: 1.75vh;
@@ -34,7 +37,6 @@ h1 {
   background-color: blueviolet;
   font-family: Sora;
 }
-
 .btn {
   border: none;
 }
