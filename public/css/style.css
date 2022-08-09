@@ -6,6 +6,21 @@
   height: 100vh;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;800&display=swap');
+
+/* Header */
+.pt-3 {
+  font-family: Sora;
+  font-weight: 800;
+  color: white;
+}
+
+a {
+  font-family: Sora;
+  font-weight: 400;
+  color: white;
+}
+
 .text-white,
 .btn,
 .btn-lg {
@@ -40,7 +55,7 @@ input {
 .nav-height,
 .btn-height {
   height: 5%;
-  background-color: bisque;
+  background-color: #343a40;
 }
 
 .container-height {
