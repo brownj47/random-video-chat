@@ -1,7 +1,7 @@
 {{!-- navigation bar --}}
 <nav class="nav-height">
-  <ul class="row justify-content-around" style=" font-weight:450;">
-    <li class="nav-item  col-sm-12 col-md-12 col-lg-2 ">
+  <ul class="row justify-content-around">
+    <li class="nav-item col-sm-12 col-md-12 col-lg-2 ">
       <a class="nav-link" href="/random/chat/mainroom">Main Room</a>
     </li>
     <li class="nav-item col-sm-12 col-md-12 col-lg-2 ">
@@ -27,13 +27,13 @@
 <div class="container-fluid container-height">
   <div class="row h-100">
     {{!-- video display --}}
-    <div class="col-lg-9 col-sm-12">
+    <div class="col-lg-8 col-md-7 col-sm-12">
       <section id="video-grid"></section>
     </div>
     {{!-- chat box --}}
-    <div class="col-lg-3 col-sm-12 mb-5" style="height: 80%; ">
-      <div class="card" style="width: 85%;">
-        <h6 class="card-subtitle chat-box-title" style="height: 1rem; color: black;">
+    <div class="chat-box col-lg-4 col-md-5 col-sm-12 mb-5">
+      <div class="card">
+        <h6 class="card-subtitle chat-box-title">
           Chat Box
         </h6>
         <div class="card-body" id="card-body">
@@ -42,7 +42,7 @@
         </div>
         {{!-- chat box send button --}}
         <form id="form" action="">
-          <input id="input" autocomplete="off" style="width: 60%;" /><button
+          <input id="input" autocomplete="off" /><button
             class="btn btn-primary btn-sizing">Send</button>
         </form>
       </div>
