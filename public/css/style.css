@@ -29,6 +29,7 @@ h1 {
   font-size: 5vh;
   margin-bottom: 0;
   padding: 0;
+  font-weight: 800;
 }
 
 p {
@@ -38,6 +39,13 @@ p {
 header {
   padding: 1rem;
   height: 10vh;
+  background: rgb(80, 37, 176);
+  background: linear-gradient(
+    22deg,
+    rgba(80, 37, 176, 1) 0%,
+    rgba(146, 0, 185, 1) 52%,
+    rgba(255, 151, 81, 1) 100%
+  );
 }
 
 .nav-link {
@@ -60,7 +68,6 @@ header {
   background-color: blueviolet;
 }
 
-/* Body */
 main {
   height: 80vh;
 }
@@ -143,11 +150,19 @@ h6 {
 }
 
 #messages > li:nth-child(odd) {
-  background: rgb(209, 182, 235);
+  background: rgb(40, 0, 126);
+
+  background: linear-gradient(
+    22deg,
+    rgba(40, 0, 126, 0.2) 0%,
+    rgba(157, 0, 199, 0.4) 52%,
+    rgba(255, 102, 0, 0.3) 100%
+  );
 }
 
 .card {
   margin: 2em;
+  border-style: red solid 10px;
 }
 
 .card-body {
@@ -164,7 +179,7 @@ h6 {
 }
 
 #form {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(2, 1, 1, 0.15);
   padding: 0.25rem;
   position: absolute;
   bottom: 0;
