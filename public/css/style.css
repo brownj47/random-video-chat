@@ -248,6 +248,10 @@ footer {
   height: 100%;
   padding: 2.5vh;
 }
+/* prevent row form overfilling in nav */
+ul.row{
+  margin-right: 0;
+}
 
 @media screen and (max-width: 991px) {
   .card{
