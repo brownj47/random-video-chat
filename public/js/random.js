@@ -46,7 +46,7 @@ const myPeer = new Peer(undefined, {
 //creating video element and muting audio
 const myVideo = document.createElement("video");
 const videoName = document.createElement('h1')
-myVideo.setAttribute(`data-name`,`${userName}`)
+videoName.textContent = userName
 myVideo.muted = true;
 const peers = {};
 //collecting the users video and audio and then passing it to the addstream function
@@ -57,19 +57,15 @@ navigator.mediaDevices
 })
   .then((stream) => {
     // current user add stream
-    addStream(myVideo, stream, userName);
+    addStream(myVideo, stream);
     myPeer.on("call", (call) => {
-      options = {metadata: {"name":`${userName}`}};
-      call.answer(stream, options);
-      // const name = call.metadata.name
-      // console.log(name)
-      video = document.createElement("video");
+      call.answer(stream);
+      const video = document.createElement("video");
       // when a new user joins, add stream and reload()
-      call.on("stream", (userVideoStream,options) => {
-        console.log(options)
-        addStream(video, userVideoStream, name);
-        //window.reload();
-        //console.log("hello")
+      call.on("stream", (userVideoStream) => {
+        addStream(video, userVideoStream);
+        window.reload();
+        // console.log("hello")
       });
     });
     
@@ -78,10 +74,10 @@ navigator.mediaDevices
       item.textContent = (`${userName} has joined the chat room...`)
       messages.appendChild(item)
       setTimeout(() => {
-        connectToNewUser(userId, stream, userName);
+        connectToNewUser(userId, stream);
       }, 1000);
     });
-  
+    
   });
   
   socket.on("user-disconnected", (userId) => {
@@ -97,10 +93,9 @@ navigator.mediaDevices
 });
 
 //takes the video element we created AND the stream object we get from the getUserMediaFunction
-const addStream = (video, stream,opt) => {
+const addStream = (video, stream) => {
   //setting video element to the stream we created
   video.srcObject = stream;
-  video.setAttribute(`data-name`,`${opt}`)
   //event listener to start video when a stream is added to it
   video.addEventListener("loadedmetadata", () => {
     video.play();
@@ -110,14 +105,11 @@ const addStream = (video, stream,opt) => {
 };
 
 //connects the new user into this call
-const connectToNewUser = (userId, stream, userName) => {
+const connectToNewUser = (userId, stream) => {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
-  // video.setAttribute(`data-name`,`${userName}`)
-  call.on("stream", (userVideoStream, options) => {
-    console.log(options)
-    // user = options.metadata.name;
-    addStream(video, userVideoStream, "joe");
+  call.on("stream", (userVideoStream) => {
+    addStream(video, userVideoStream);
   });
   // close video when user leaves the call
   call.on("close", () => {
