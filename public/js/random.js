@@ -63,8 +63,7 @@ navigator.mediaDevices
       // when a new user joins, add stream and reload()
       call.on("stream", (userVideoStream) => {
         addStream(video, userVideoStream);
-        window.reload();
-        // console.log("hello")
+        // window.reload();
       });
     });
 
@@ -111,7 +110,6 @@ const connectToNewUser = (userId, stream) => {
   // close video when user leaves the call
   call.on("close", () => {
     video.remove();
-    location.reload();
   });
   peers[userId] = call;
 };
