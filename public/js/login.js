@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('random/chat/mainroom'); 
     } else {
-      alert(response);
+      alert(`Error: ${JSON.stringify(response.statusText)}`);
     };
   } else {
     alert('Please enter a username and password.')
