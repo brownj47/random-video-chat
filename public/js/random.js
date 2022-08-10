@@ -59,27 +59,28 @@ navigator.mediaDevices
     addStream(myVideo, stream);
     myPeer.on("call", (call) => {
       call.answer(stream);
-      const video = document.createElement("video");
+      video = document.createElement("video");
       // when a new user joins, add stream and reload()
       call.on("stream", (userVideoStream) => {
         addStream(video, userVideoStream);
-        // window.reload();
-        // console.log("hello")
+        //window.reload();
+        //console.log("hello")
       });
     });
 
     socket.on("user-connected", (userId, userName) => {
+      const item = document.createElement("li");
+      item.textContent = `${userName} has joined the chat room...`;
+      messages.appendChild(item);
       setTimeout(() => {
-        const item = document.createElement("li");
-        item.textContent = `${userName} has joined the chat room...`;
-        messages.appendChild(item);
         connectToNewUser(userId, stream);
-      }, 2000);
+      }, 1000);
     });
   });
 
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) peers[userId].close();
+  video.remove();
 });
 
 myPeer.on("open", (id) => {
