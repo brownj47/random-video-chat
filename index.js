@@ -31,6 +31,7 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", () => {
       socket.to(roomId).emit("user-disconnected", userId);
+      socket.to(roomId).emit('clear-grid')
     });
     socket.on("chat message", async(msg) => {
       console.log("message: " + msg);
