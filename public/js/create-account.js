@@ -19,7 +19,7 @@ const signupFormHandler = async (event) => {
         if (response.ok) {  
             document.location.replace('/random/chat/mainroom');
         } else {
-            alert(response.statusText);
+            alert(`Error: ${JSON.stringify(response.statusText)}`);
         };
     } else{
         alert('Please enter a username, email, and password.')
